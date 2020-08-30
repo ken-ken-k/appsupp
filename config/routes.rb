@@ -1,3 +1,14 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get 'supplements/index'
+  get 'supplements/show'
+  get 'supplements/new'
+  get 'supplements/edit'
+  devise_for :users
+  root to: "home#index"
+  resources :supplements do
+    collection do
+      get 'search'
+    end
+  end
+  resources :users
 end
